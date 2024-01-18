@@ -5,4 +5,6 @@ import com.SwapIT.SwapIt_BackEnd.dto.UserDto;
 
 public interface UserService {
     UserDto createUser(SignupDto signupDto);
+
+    boolean hasUserWithEmail(String email);
 }

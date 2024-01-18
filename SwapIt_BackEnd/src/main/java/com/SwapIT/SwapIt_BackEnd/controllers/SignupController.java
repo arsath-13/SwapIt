@@ -17,6 +17,11 @@ public class SignupController {
 
     @PostMapping("/sign-up")
     public ResponseEntity<?> SignupUser(@RequestBody SignupDto signupDto) {
+
+        if(userService.hasUserWithEmail(signupDto.getEmail())) {
+            return new ResponseEntity<>("User already exists",HttpStatus.NOT_ACCEPTABLE);
+        }
+
         UserDto createdUser = userService.createUser(signupDto);
         if (createdUser == null) {
             return new ResponseEntity<>("User not created. Come again later!", HttpStatus.BAD_REQUEST);

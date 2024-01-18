@@ -12,6 +12,5 @@ public class UserDto {
     private UserRole userRole;
     private byte[] img;
 
-    public UserDto(long id, String email, String name, UserRole userRole) {
-    }
+
 }

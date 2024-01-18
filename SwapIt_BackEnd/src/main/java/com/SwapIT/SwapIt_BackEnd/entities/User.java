@@ -23,9 +23,6 @@ public class User {
     private UserRole userRole;
     private byte[] img;
 
-    public UserDto mapUserToUserDto() {
-        return new UserDto(id,email,name,userRole);
-    }
 
 
 }
