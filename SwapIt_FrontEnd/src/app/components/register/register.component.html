@@ -1,1 +1,41 @@
-<p>register works!</p>
+<div class="bg" style="background-color: #F8F8F8;">
+    <div class="parent">
+        <div class="child">
+            <div class="imgDiv">
+                <div class="title-container">
+                    <h1 style="margin-right: 80px;">Sign Up</h1>
+                </div>
+            </div>
+            <form class="signup-form" [formGroup]="validateForm" (ngSubmit)="register()">
+                <input placeholder="E-mail" id="email" formControlName="email"/>
+                <ng-container *ngIf="validateForm.get('email')?.hasError('required')">
+                    <div class="error-message">* Please input your email!</div>
+                </ng-container>
+                
+                <input placeholder="Password" type="password" id="password" formControlName="password"/>
+                <ng-container *ngIf="validateForm.get('password')?.hasError('pattern')">
+                    <div class="error-message">* Password should contain 8 characters, 1 lower-case, 1 upper-case, 1 number, and 1 special character at least!</div>
+                </ng-container>
+                <ng-container *ngIf="validateForm.get('password')?.hasError('required')">
+                    <div class="error-message">* Enter your password!</div>
+                </ng-container>
+
+                <input type="password" placeholder="Confirm Password" id="checkPassword" formControlName="confirmPassword"/>
+                <ng-container *ngIf="validateForm.get('confirmPassword')?.hasError('required')">
+                    <div class="error-message">* Please confirm your password!</div>
+                </ng-container>
+                <ng-container *ngIf="validateForm.hasError('confirm', 'confirmPassword')">
+                    <div class="error-message">* Passwords do not match!</div>
+                </ng-container>
+
+                <input placeholder="Name" id="username" formControlName="name"/>
+                <ng-container *ngIf="validateForm.get('name')?.hasError('required')">
+                    <div class="error-message">* Please input your username!</div>
+                </ng-container>
+
+                <button class="login-form-button login-form-margin" type="submit" [disabled]="hasErrorMessages()" [class.disabled-button]="hasErrorMessages()" >Register</button>
+                Or <a routerLink="/login">Login Now!</a>
+            </form>
+        </div>
+    </div>
+</div>
