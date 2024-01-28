@@ -19,7 +19,7 @@ public class SignupController {
     public ResponseEntity<?> SignupUser(@RequestBody SignupDto signupDto) {
 
         if(userService.hasUserWithEmail(signupDto.getEmail())) {
-            return new ResponseEntity<>("User already exists",HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>("User already exists",HttpStatus.CONFLICT);
         }
 
         UserDto createdUser = userService.createUser(signupDto);
