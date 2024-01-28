@@ -14,6 +14,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthService } from './services/auth-service/auth.service';
 import { LoginComponent } from './components/login/login.component';
+import { AdminModule } from './admin/admin.module';
+import { UserModule } from './user/user.module';
 
 
 registerLocaleData(en);
@@ -31,7 +33,9 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminModule,
+    UserModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

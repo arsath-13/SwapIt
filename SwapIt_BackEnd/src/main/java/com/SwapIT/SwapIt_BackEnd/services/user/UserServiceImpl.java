@@ -5,6 +5,7 @@ import com.SwapIT.SwapIt_BackEnd.dto.UserDto;
 import com.SwapIT.SwapIt_BackEnd.entities.User;
 import com.SwapIT.SwapIt_BackEnd.enums.UserRole;
 import com.SwapIT.SwapIt_BackEnd.repository.UserRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,6 +17,19 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepository userRepository;
+
+    @PostConstruct
+    public void createAdminAccount(){
+        User adminAccount = userRepository.findByUserRole(UserRole.ADMIN);
+        if(adminAccount == null) {
+            User user = new User();
+            user.setUserRole(UserRole.ADMIN);
+            user.setEmail("swapitjpura@gmail.com");
+            user.setName("admin");
+            user.setPassword(new BCryptPasswordEncoder().encode("@Admin13"));
+            userRepository.save(user);
+        }
+    }
 
     @Override
     public UserDto createUser(SignupDto signupDto) {
