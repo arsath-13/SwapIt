@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthService } from './services/auth-service/auth.service';
+import { LoginComponent } from './components/login/login.component';
 
 
 registerLocaleData(en);
@@ -21,7 +22,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
