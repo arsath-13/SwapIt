@@ -1,0 +1,22 @@
+<div class="bg" style="background-color: #F8F8F8;">
+    <div class="parent">
+        <div class="child">
+            <div class="imgDiv">
+                <h1>Login</h1>
+            </div>
+            <form [formGroup]="validateForm" class="login-form">
+                <div class="input">
+                    <input type="text" placeholder="Email" formControlName="username"/>
+                </div>
+                <div class="input">
+                    <input type="password" placeholder="Password" formControlName="password"/>
+                </div>
+                <div class="login-form-margin">
+                        
+                </div>
+                <button class="login-form-button login-form-margin" (click)="login()">Login</button>
+                Or <a routerLink="/register">Register Now!!!</a>
+            </form>
+        </div>
+    </div>
+</div>
