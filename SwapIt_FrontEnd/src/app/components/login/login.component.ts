@@ -4,6 +4,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { AuthService } from '../../services/auth-service/auth.service';
 import { Route, Router } from '@angular/router';
 import { LocalStorageService } from '../../services/storage-service/local-storage.service';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -45,7 +46,9 @@ export class LoginComponent {
     //     alert("Error! \n Bad Credentials!!!")
     //   }
     const role = res.body.role;
+    const token=res.body.token;
     LocalStorageService.roleSaver = role
+    LocalStorageService.tokenSaver = token
 
       if (role === 'ADMIN') {
         this.router.navigateByUrl("/admin/dashboard");
