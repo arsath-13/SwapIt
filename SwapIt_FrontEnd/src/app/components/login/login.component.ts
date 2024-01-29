@@ -24,7 +24,9 @@ export class LoginComponent {
     })
   }
 
-  login() {
+  
+
+  login(): any {
     console.log(this.validateForm);
     this.authService.login(this.validateForm.get(['username'])!.value,this.validateForm.get(['password'])!.value).subscribe((res:any) =>{
       console.log(res);
@@ -43,11 +45,14 @@ export class LoginComponent {
     //     alert("Error! \n Bad Credentials!!!")
     //   }
     const role = res.body.role;
+    LocalStorageService.roleSaver = role
 
       if (role === 'ADMIN') {
         this.router.navigateByUrl("/admin/dashboard");
+        
       } else if (role === 'USER') {
         this.router.navigateByUrl("/user/dashboard");
+        
       }
     },
     (error: any) => {
@@ -61,5 +66,6 @@ export class LoginComponent {
     }
     
     )
+    
      }
 }

@@ -1,19 +1,31 @@
-<div class="header-container">
-    <div class="logo-container">
-        <a class="logo-link" routerLink="/login">Swap It</a>
+<div class="navbar" *ngIf="!isUserLoggedIn && !isAdminLoggedIn">
+    <div>
+        <a class="brand" routerLink="/login">SwapIt</a>
     </div>
+    <div class="nav-links">
+        <a routerLink="/register" routerLinkActive="active">Sign up</a>
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+    </div>
+</div>
 
-    <!-- <div class="nav-links-container">
-        <a class="nav-link" routerLink="/register" routerLinkActive="active">Sign Up</a>
-        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-    </div> -->
 
-    <ul class="nav-list-container">
-        <li class="nav-list-item">
-            <a class="nav-link" routerLink="/register" routerLinkActive="active">Sign Up</a>
-        </li>
-        <li class="nav-list-item">
-            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-        </li>
-    </ul>
+
+<div class="navbar" *ngIf="isUserLoggedIn">
+    <div>
+        <a class="brand" routerLink="/user/dashboard">SwapIt</a>
+    </div>
+    <div class="nav-links">
+        <a routerLink="/user/dashboard" routerLinkActive="active">Dashboard</a>
+        <a (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
+</div>
+
+<div class="navbar" *ngIf="isAdminLoggedIn">
+    <div>
+        <a class="brand" routerLink="/admin/dashboard">SwapIt</a>
+    </div>
+    <div class="nav-links">
+        <a routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+        <a (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
 </div>
