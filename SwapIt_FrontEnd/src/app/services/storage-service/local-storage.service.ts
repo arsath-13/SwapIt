@@ -32,9 +32,10 @@ export class LocalStorageService {
   }
 
   static roleSaver:string;
+  static tokenSaver:string;
 
-  static getToken(): any {
-    return localStorage.getItem(TOKEN);
+  static getToken(): string {
+    return this.tokenSaver;
   }
 
   static hasToken(): any {
@@ -44,9 +45,7 @@ export class LocalStorageService {
     return true;
   }
 
-  static getRole(userRole: string) {
-    return userRole
-  }
+  
 
   static isUserLoggedIn(): any {
     if (this.getToken()===null){

@@ -3,15 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PostCategoryComponent } from './components/post-category/post-category.component';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    PostCategoryComponent,
+    PostCategoryComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

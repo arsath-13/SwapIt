@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environments';
 import { LocalStorageService } from '../storage-service/local-storage.service';
 
 const BASIC_URL = environment["BASIC_URL"]
-export const AUTH_HEADER = "authorization";
+export const AUTH_HEADER = 'Authorization';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class AuthService {
   login(username: string, password: string): any {
     return this.http.post<[]>(BASIC_URL + "authenticate",
       { username, password },
-      { observe: 'response' })
+      { observe: `response` })
       .pipe(
         tap(_ => this.log("User Authentication")),
         map((res: HttpResponse<any>) => {

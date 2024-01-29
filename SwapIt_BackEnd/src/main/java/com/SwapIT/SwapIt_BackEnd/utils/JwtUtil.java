@@ -26,6 +26,14 @@ public class JwtUtil {
         return claimResolver.apply(claims);
     }
     private Claims extractAllClaims(String token) {
+
+        if (token == null || token.isEmpty()) {
+            // Handle the case where the token is null or empty
+            // You can log a message or throw an exception based on your requirements
+            // For now, let's throw an exception for clarity
+            throw new IllegalArgumentException("JWT token is null or empty");
+        }
+
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSignKey())
