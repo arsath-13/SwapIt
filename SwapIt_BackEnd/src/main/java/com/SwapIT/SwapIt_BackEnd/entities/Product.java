@@ -18,8 +18,11 @@ public class Product {
     @Lob
     private String description;
     private Integer price;
+
+    @Column(columnDefinition = "longblob")
     private byte[] image;
-    private Boolean status;
+
+    private Boolean status=true;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
