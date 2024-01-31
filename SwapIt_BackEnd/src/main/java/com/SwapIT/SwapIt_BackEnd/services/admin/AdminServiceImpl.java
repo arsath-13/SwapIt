@@ -57,4 +57,12 @@ public class AdminServiceImpl implements AdminService{
     public List<ProductDto> getAllProducts() {
         return productRepository.findAll().stream().map(Product::getProductDto).collect(Collectors.toList());
     }
+
+    @Override
+    public void deleteProduct(Long id) {
+        Optional<Product> optionalProduct=productRepository.findById(id);
+        if(optionalProduct.isEmpty())
+            throw new IllegalArgumentException("Product with id "+id+" is not found.");
+        productRepository.deleteById(id);
+    }
 }

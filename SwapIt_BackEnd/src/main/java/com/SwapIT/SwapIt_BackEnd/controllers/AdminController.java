@@ -52,4 +52,10 @@ public class AdminController {
         return ResponseEntity.ok (productDtoList);
     }
 
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        adminService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
