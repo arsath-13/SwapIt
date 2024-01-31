@@ -1,13 +1,16 @@
 package com.SwapIT.SwapIt_BackEnd.controllers;
 
 import com.SwapIT.SwapIt_BackEnd.dto.CategoryDto;
+import com.SwapIT.SwapIt_BackEnd.dto.ProductDto;
 import com.SwapIT.SwapIt_BackEnd.entities.Category;
+import com.SwapIT.SwapIt_BackEnd.entities.Product;
 import com.SwapIT.SwapIt_BackEnd.services.admin.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -30,6 +33,12 @@ public class AdminController {
     public ResponseEntity<List<CategoryDto>> getAllCategories() {
         List<CategoryDto> allCategories = adminService.getAllCategories();
         return ResponseEntity.ok(allCategories);
+    }
+
+    @PostMapping("/products/{category_id}")
+    public ResponseEntity<Product> postProduct(@PathVariable Long category_id, @ModelAttribute ProductDto productDto) throws IOException {
+        Product postedProduct = adminService.postProduct(category_id,productDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(postedProduct);
     }
 
 }
