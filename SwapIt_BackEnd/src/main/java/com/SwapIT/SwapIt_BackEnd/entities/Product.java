@@ -1,10 +1,12 @@
 package com.SwapIT.SwapIt_BackEnd.entities;
 
+import com.SwapIT.SwapIt_BackEnd.dto.ProductDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.security.core.parameters.P;
 
 @Entity
 @Data
@@ -29,4 +31,18 @@ public class Product {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Category category;
+
+    public ProductDto getProductDto() {
+        ProductDto productDto = new ProductDto();
+        productDto.setId(id);
+        productDto.setName(name);
+        productDto.setDescription(description);
+        productDto.setPrice(price);
+        productDto.setStatus(status);
+        productDto.setReturnedImage(image);
+        productDto.setCategoryId(category.getId());
+        productDto.setCategoryName(category.getName());
+        return productDto;
+
+    }
 }
