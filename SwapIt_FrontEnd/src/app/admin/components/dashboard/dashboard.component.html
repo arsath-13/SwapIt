@@ -1,1 +1,18 @@
-<div>Admin-Dashboard works!</div>
+<div class="product-container">
+    <div class="product-item" *ngFor="let product of products">
+        <div class="product-details">
+            <img class="profile" [src]="product.processedImage" alt="profile" />
+            <h2 class="product-name">{{product.name}}</h2>
+            <p class="product-description">{{product.description}}</p>
+
+            <hr class="divider" />
+
+            <h5 class="points-category">
+                <b>{{product.price}}</b> Points <br />
+                Category: <b>{{product.categoryName}}</b>
+            </h5>
+
+            <hr class="divider" />
+        </div>
+    </div>
+</div>

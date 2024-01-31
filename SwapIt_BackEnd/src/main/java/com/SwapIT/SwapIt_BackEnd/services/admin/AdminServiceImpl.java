@@ -52,4 +52,9 @@ public class AdminServiceImpl implements AdminService{
         }
         return null;
     }
+
+    @Override
+    public List<ProductDto> getAllProducts() {
+        return productRepository.findAll().stream().map(Product::getProductDto).collect(Collectors.toList());
+    }
 }
