@@ -13,9 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+
+
+@CrossOrigin(origins = "http://localhost:4200",
+        allowedHeaders = "Authorization")
 @RestController
 @RequestMapping("api/admin")
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "Authorization")
+
+
 
 public class AdminController {
 
@@ -35,7 +40,7 @@ public class AdminController {
         return ResponseEntity.ok(allCategories);
     }
 
-    @PostMapping("/products/{category_id}")
+    @PostMapping("/product/{category_id}")
     public ResponseEntity<Product> postProduct(@PathVariable Long category_id, @ModelAttribute ProductDto productDto) throws IOException {
         Product postedProduct = adminService.postProduct(category_id,productDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(postedProduct);
