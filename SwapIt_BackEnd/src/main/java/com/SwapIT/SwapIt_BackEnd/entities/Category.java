@@ -1,5 +1,6 @@
 package com.SwapIT.SwapIt_BackEnd.entities;
 
+import com.SwapIT.SwapIt_BackEnd.dto.CategoryDto;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,5 +16,13 @@ public class Category {
 
     @Lob
     private String description;
+
+    public CategoryDto getCategoryDto() {
+        CategoryDto categoryDto= new CategoryDto();
+        categoryDto.setId(id);
+        categoryDto.setName(name);
+        categoryDto.setDescription(description);
+        return categoryDto;
+    }
 
 }
