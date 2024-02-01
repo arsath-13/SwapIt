@@ -7,7 +7,6 @@ import com.SwapIT.SwapIt_BackEnd.entities.Product;
 import com.SwapIT.SwapIt_BackEnd.repository.CategoryRepository;
 import com.SwapIT.SwapIt_BackEnd.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -56,5 +55,23 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public List<ProductDto> getAllProducts() {
         return productRepository.findAll().stream().map(Product::getProductDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteProduct(Long id) {
+        Optional<Product> optionalProduct=productRepository.findById(id);
+        if(optionalProduct.isEmpty())
+            throw new IllegalArgumentException("Product with id "+id+" is not found.");
+        productRepository.deleteById(id);
+    }
+
+    @Override
+    public ProductDto updateProduct(Long id) {
+        Optional<Product> optionalProduct=productRepository.findById(id);
+        if(optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            return product.getProductDto();
+        }
+        return null;
     }
 }
