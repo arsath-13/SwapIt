@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
-
+import java.util.PrimitiveIterator;
 
 
 @CrossOrigin(origins = "http://localhost:4200",
@@ -56,6 +56,15 @@ public class AdminController {
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         adminService.deleteProduct(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable Long id) {
+        ProductDto productDto = adminService.updateProduct(id);
+        if(productDto==null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(productDto);
     }
 
 }

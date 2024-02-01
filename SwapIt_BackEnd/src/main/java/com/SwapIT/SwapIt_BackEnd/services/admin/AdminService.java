@@ -18,4 +18,6 @@ public interface AdminService {
     List<ProductDto> getAllProducts();
 
     void deleteProduct(Long id);
+
+    ProductDto updateProduct(Long id);
 }
