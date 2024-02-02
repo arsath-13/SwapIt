@@ -12,6 +12,7 @@ import { Token } from '@angular/compiler';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  
   validateForm!:FormGroup;
 
   constructor (private authService: AuthService,

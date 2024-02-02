@@ -19,5 +19,7 @@ public interface AdminService {
 
     void deleteProduct(Long id);
 
-    ProductDto updateProduct(Long id);
+    ProductDto getProductById(Long id);
+
+    ProductDto updateProduct(Long category_id, Long productId, ProductDto productDto) throws IOException;
 }

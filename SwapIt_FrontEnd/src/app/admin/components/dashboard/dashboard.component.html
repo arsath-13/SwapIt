@@ -1,3 +1,6 @@
+<div class="welcome">
+    Welcome to SwapIt admin portal...
+</div>
 <div class="product-container">
     <div class="product-item" *ngFor="let product of products">
         <div class="product-details">
@@ -8,8 +11,13 @@
             <hr class="divider" />
 
             <h5 class="points-category">
-                <b>{{product.price}}</b> Points <br />
+                Points   :   <b>{{product.price}}</b>  <br />
+                <hr class="divider" />
                 Category: <b>{{product.categoryName}}</b>
+            </h5>
+
+            <h5 class="product-description">
+                Current Availability : {{product.status?"Available":"Not Available"}}
             </h5>
 
             <hr class="divider" />
