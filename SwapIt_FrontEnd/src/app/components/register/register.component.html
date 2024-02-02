@@ -12,7 +12,11 @@
                     <div class="error-message">* Please input your email!</div>
                 </ng-container>
                 
-                <input placeholder="Password" type="password" id="password" formControlName="password"/>
+                <input placeholder="Password" type="password" id="password" formControlName="password" />
+                
+                
+                
+                
                 <ng-container *ngIf="validateForm.get('password')?.hasError('pattern')">
                     <div class="error-message">* Password should contain 8 characters, 1 lower-case, 1 upper-case, 1 number, and 1 special character at least!</div>
                 </ng-container>
@@ -39,3 +43,4 @@
         </div>
     </div>
 </div>
+

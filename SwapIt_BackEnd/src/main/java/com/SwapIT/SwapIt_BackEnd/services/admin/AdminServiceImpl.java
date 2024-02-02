@@ -66,11 +66,33 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public ProductDto updateProduct(Long id) {
+    public ProductDto getProductById(Long id) {
         Optional<Product> optionalProduct=productRepository.findById(id);
         if(optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
             return product.getProductDto();
+        }
+        return null;
+    }
+
+    @Override
+    public ProductDto updateProduct(Long category_id, Long productId, ProductDto productDto) throws IOException {
+        Optional<Category> optionalCategory = categoryRepository.findById(category_id);
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        if (optionalCategory.isPresent() && optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            product. setName (productDto. getName());
+            product. setDescription(productDto.getDescription());
+            product. setPrice(productDto.getPrice());
+            product. setStatus(productDto.getStatus());
+            product. setCategory(optionalCategory.get());
+
+            if (productDto.getImage() != null)
+                product.setImage (productDto.getImage().getBytes());
+            Product updatedProduct = productRepository. save(product);
+            ProductDto updatedProductDto = new ProductDto();
+            updatedProductDto. setId (updatedProduct.getId());
+            return updatedProductDto;
         }
         return null;
     }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth-service/auth.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,9 +9,10 @@ import { AuthService } from '../../services/auth-service/auth.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+
   validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router:Router) {
     }
 
   ngOnInit() {
@@ -26,6 +28,9 @@ export class RegisterComponent {
     console.log(this.validateForm.value);
     this.authService.register(this.validateForm.value).subscribe((res) =>{
       console.log(res);
+      alert("Registration Successfull!!")
+      this.router.navigateByUrl("/login")
+      
     })
      }
 

@@ -60,11 +60,25 @@ public class AdminController {
 
     @GetMapping("/product/{id}")
     public ResponseEntity<ProductDto> updateProduct(@PathVariable Long id) {
-        ProductDto productDto = adminService.updateProduct(id);
+        ProductDto productDto = adminService.getProductById(id);
         if(productDto==null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(productDto);
+    }
+
+    @PutMapping ("/{category_id}/product/{productId}")
+    public ResponseEntity<?> updateProduct(
+            @PathVariable Long category_id,
+            @PathVariable Long productId,
+            @ModelAttribute ProductDto productDto
+    ) throws IOException {
+        ProductDto updatedProduct = adminService.updateProduct(category_id,productId,productDto);
+        if(updatedProduct==null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong");
+
+        }
+        return ResponseEntity.ok(updatedProduct);
     }
 
 }
