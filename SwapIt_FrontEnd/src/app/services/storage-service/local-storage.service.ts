@@ -1,8 +1,4 @@
-import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../auth-service/auth.service';
-import { Router } from '@angular/router';
 
 const TOKEN = "I_token";
 const USERID = "I_user";

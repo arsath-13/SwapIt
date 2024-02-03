@@ -9,7 +9,7 @@
 </div>
 
 
-
+<!-- User portal -->
 <div class="navbar" *ngIf="isUserLoggedIn">
     <div>
         <a class="brand" routerLink="/user/dashboard">SwapIt</a>
@@ -21,6 +21,8 @@
     </div>
 </div>
 
+
+<!-- Admin portal -->
 <div class="navbar" *ngIf="isAdminLoggedIn">
     <div>
         <a class="brand" routerLink="/admin/dashboard">SwapIt</a>
